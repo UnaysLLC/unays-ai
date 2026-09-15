@@ -14,8 +14,8 @@ This is the first community release of the actual Unays AI interface and reusabl
 
 - Streaming conversations, automatic task routing, linked web research, and reviewed learning hints.
 - A multi-file coding workspace, syntax highlighting, editable files, local revisions, ZIP export, sandboxed browser previews, and expiring preview links.
-- Image generation with creative styles, variations, JPEG download, and saving to your browser's Files library.
-- Local files, notes, collections, project dashboards, dark/light appearance, and responsive desktop, iPad and phone layouts.
+- Image generation from natural requests such as “draw a robot” or “make me a logo”, with creative styles, variations, cancellation, JPEG download, and saving to your browser's Files library.
+- Local files, notes, collections, project dashboards, an expanded recent-chat sidebar, dark/light appearance, and responsive desktop, iPad and phone layouts.
 - A private image-service Worker. Provider credentials remain on the server.
 - Tests for key rotation, interrupted streams, guest accounting, image failures, origin checks, and protected file serving.
 

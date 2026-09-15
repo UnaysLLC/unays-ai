@@ -36,7 +36,7 @@ export function createImageStudio({directory,ledger,auth,authToken,readBody,json
    if(pending.has(identity))throw error(429,'Your current image is still being created.');if(globalPending>=2)throw error(429,'The image studio is busy. Please try again in a moment.');
    rate('ip:'+sha(ip(req)),3,60000);rate(identity,user?12:6,3600000);
    if(guest)reservation=ledger.reserve(guest);pending.add(identity);globalPending++;held=true;
-   const response=await fetchImpl(config.url,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+config.key},body:JSON.stringify({prompt:prompt+'\n'+IMAGE_STYLES[style]}),signal:AbortSignal.any([controller.signal,AbortSignal.timeout(85000)])});
+   const response=await fetchImpl(config.url,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+config.key},body:JSON.stringify({prompt:prompt+'\n'+IMAGE_STYLES[style]}),signal:AbortSignal.any([controller.signal,AbortSignal.timeout(45000)])});
    if(!response.ok){await response.body?.cancel();throw error(503,'The image service could not finish this image. Please try again.');}
    const reader=response.body.getReader(),parts=[];let length=0;
    while(true){const {done,value}=await reader.read();if(done)break;length+=value.length;if(length>10_500_000){await reader.cancel();throw error(503,'The image could not be delivered. Please retry.');}parts.push(value);}

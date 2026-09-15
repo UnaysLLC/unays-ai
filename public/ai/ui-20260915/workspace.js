@@ -37,7 +37,7 @@
     if(!response.ok||data.ok===false)throw Object.assign(new Error(data.error||data.message||'This request could not be completed.'),{status:response.status,code:data.code,data});
     return data;
   }
-  const post = (path, body) => api(path,{method:'POST',body:JSON.stringify(body)});
+  const post = (path, body, options={}) => api(path,{...options,method:'POST',body:JSON.stringify(body)});
   function persist() { storage.set(storeKey(),state.chats.filter(c => !state.user || !c.userId || c.userId===state.user.id).slice(0,40)); }
   function savedChats() { const rows=storage.get(storeKey(),[]);return Array.isArray(rows)?rows.filter(c => c&&typeof c.id==='string'&&Array.isArray(c.messages)):[]; }
   function updateQuota(guest) {
@@ -154,7 +154,7 @@
   async function send(displayText, fullText) {
     if(!state.initialized){await ready;}
     if(state.sending||!displayText.trim())return;
-    if(!window.UnaysCode?.active()&&/\b(?:generate|create|make|draw|design)\b.{0,65}\b(?:image|picture|illustration|photo|poster|artwork)\b/i.test(displayText)&&!fullText&&!/\b(?:code|website|html|css|javascript|web app)\b/i.test(displayText)){window.UnaysImages?.open(displayText,true);return;}
+    if(window.UnaysImages?.wantsImage(displayText)){window.UnaysImages.open(displayText,true);return;}
     if(!state.user&&state.guest?.remaining===0){openAuth(true);return;}
     let chat=currentChat();
     if(!chat){chat={id:uid(),title:displayText.slice(0,65),mode:state.mode,projectId:state.newProjectId||null,userId:state.user?.id||null,createdAt:new Date().toISOString(),messages:[]};state.chats.unshift(chat);state.current=chat.id;}

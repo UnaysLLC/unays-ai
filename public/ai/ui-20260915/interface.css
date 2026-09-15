@@ -24,3 +24,49 @@ body{background:var(--bg);color:var(--text);font-size:14px}body,button,input,tex
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}body[data-motion=off] *,body[data-motion=off] *::before,body[data-motion=off] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}body[data-text-size=large] .markdown{font-size:16px}
 
 .discord-link{margin-bottom:1px}.sidebar-bottom{margin-top:8px}@media(max-height:850px) and (min-width:901px){.community-link{padding-top:5px;padding-bottom:5px}}
+
+/* Give recent conversations the available sidebar space. */
+.app{grid-template-columns:280px minmax(0,1fr)}
+.sidebar{padding:18px 14px 12px;overflow-y:auto}
+.sidebar>.brand-row,.sidebar>.new-chat,.sidebar>.main-nav,.sidebar>.sidebar-bottom{flex-shrink:0}
+.sidebar .brand-row{margin:0 8px 16px}
+.sidebar .main-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin:15px 0 16px}
+.sidebar .nav-item{min-height:38px;gap:8px;padding:8px 10px;font-size:12px}
+.sidebar #nav-code{grid-column:1/-1}
+.sidebar .sidebar-section{flex:1 0 240px;min-height:240px;max-height:none;padding-top:14px}
+.sidebar .section-label{font-size:10px;letter-spacing:1.2px;margin-bottom:8px}
+.sidebar .history-search{font-size:12px;padding:9px 10px;margin-bottom:7px;flex-shrink:0}
+.sidebar .history-list{max-height:none;min-height:180px;flex:1 1 0;overscroll-behavior:contain;scrollbar-gutter:stable}
+.sidebar .history-open{font-size:13px;min-height:40px;padding:10px 7px;line-height:20px;color:var(--text)}
+.sidebar .history-open::before{margin-right:8px}
+.sidebar .sidebar-bottom{margin-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 4px}
+.sidebar .community-link{gap:6px;padding:9px 5px;font-size:9px;white-space:nowrap}
+.sidebar .community-link>span:last-child{display:none}
+.sidebar .community-link svg{width:13px;height:13px;flex-shrink:0}
+.sidebar .guest-card{grid-column:1/-1;padding:9px 11px;margin-top:4px}
+.sidebar .guest-card-title{display:none}
+.sidebar .guest-card p{margin:0 0 6px}
+.sidebar .quota-track{margin:6px 0}
+.sidebar .guest-card .text-button{min-height:22px}
+.sidebar .account-row{grid-column:1/-1;margin-top:10px;padding-top:10px;min-height:44px}
+@media(max-width:1200px) and (min-width:1025px){.app,.app.coding-workspace{grid-template-columns:270px minmax(0,1fr)}}
+@media(min-width:1025px){.app.coding-workspace{grid-template-columns:280px minmax(0,1fr)}}
+@media(max-width:1024px){
+ .app,.app.coding-workspace{grid-template-columns:minmax(0,1fr)}
+ .sidebar{width:min(340px,calc(100vw - 24px));padding: max(16px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom))}
+ .sidebar .brand-row{margin-bottom:13px}
+ .sidebar .main-nav{margin:12px 0 13px;gap:2px 5px}
+ .sidebar .nav-item{min-height:44px;font-size:13px}
+ .sidebar .history-open{min-height:44px;font-size:14px;padding:12px 8px}
+ .sidebar .history-item .icon-button{height:44px;min-width:36px}
+ .sidebar .community-link{min-height:40px;font-size:11px}
+ .sidebar .sidebar-section{flex-basis:250px;min-height:250px}
+}
+@media(min-height:950px){.sidebar .sidebar-section{flex-basis:340px;min-height:340px}}
+@media(max-height:850px) and (min-width:1025px){
+ .sidebar{padding-top:12px}
+ .sidebar .brand-row{margin-bottom:10px}
+ .sidebar .main-nav{margin:10px 0;gap:2px}
+ .sidebar .nav-item{min-height:32px;padding:6px 10px}
+ .sidebar .account-row{margin-top:6px;padding-top:6px}
+}
