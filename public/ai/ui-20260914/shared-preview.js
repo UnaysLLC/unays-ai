@@ -1,0 +1,6 @@
+(() => {
+ const $=id=>document.getElementById(id),id=location.pathname.split('/').filter(Boolean).at(-1);
+ document.querySelectorAll('[data-width]').forEach(button=>button.onclick=()=>{document.querySelectorAll('[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('shared-frame').style.width=button.dataset.width==='full'?'100%':button.dataset.width+'px';});
+ $('copy-preview-link').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('copy-preview-link').textContent='Copied ✓';}catch{$('preview-status').textContent='Copy the address from your browser to share this preview.';$('preview-status').hidden=false;}};
+ (async()=>{try{if(!/^[a-f0-9]{48}$/.test(id))throw Error('This preview link is invalid.');const response=await fetch('/ai/api/code/previews/'+id,{credentials:'omit',cache:'no-store'}),data=await response.json();if(!response.ok)throw Error(data.error||'Preview unavailable.');$('preview-title').textContent=data.title;document.title=data.title+' · Unays Code preview';$('preview-expiry').textContent='Available until '+new Date(data.expiresAt).toLocaleDateString();const frame=$('shared-frame');frame.onload=()=>$('preview-status').hidden=true;frame.src='/ai/api/code/previews/'+id+'/render';frame.hidden=false;}catch(error){$('preview-status').textContent=error.message;}})();
+})();

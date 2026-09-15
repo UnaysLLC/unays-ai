@@ -1,0 +1,20 @@
+{
+  "name": "unays-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An open-source AI workspace for thinking, learning, coding and creating.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test",
+    "check": "node --check server.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UnaysLLC/unays-ai.git"
+  }
+}
