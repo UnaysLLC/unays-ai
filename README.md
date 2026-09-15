@@ -4,7 +4,7 @@
 
 An open-source AI workspace by [Unays LLC](https://unays.net). Think, learn, create images, organize knowledge, and build real browser projects in one black-and-gold interface.
 
-[Use Unays AI](https://unays.net/ai/) · [Join our Discord](https://discord.gg/fSvV8vqzA) · [Report an issue](https://github.com/UnaysLLC/unays-ai/issues)
+[Use Unays AI](https://unays.net/ai/) · [Join our Discord](https://discord.gg/fSvV8vqzA) · [Report an issue](https://github.com/UnaysLLC/unays-ai/issues) · [Contact Unays LLC](mailto:contact@Unays.net)
 
 ![Unays AI image studio](docs/image-studio.png)
 

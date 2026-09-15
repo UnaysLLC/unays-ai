@@ -41,6 +41,7 @@
   function persist() { storage.set(storeKey(),state.chats.filter(c => !state.user || !c.userId || c.userId===state.user.id).slice(0,40)); }
   function savedChats() { const rows=storage.get(storeKey(),[]);return Array.isArray(rows)?rows.filter(c => c&&typeof c.id==='string'&&Array.isArray(c.messages)):[]; }
   function updateQuota(guest) {
+    window.dispatchEvent(new CustomEvent('unays-identity',{detail:state.user?.id||'guest'}));
     if(guest)state.guest=guest;
     const signed=!!state.user,remaining=state.guest?.remaining ?? 10;
     $('guest-card').hidden=signed;$('top-signin').hidden=signed;$('profile-link').hidden=!signed;
