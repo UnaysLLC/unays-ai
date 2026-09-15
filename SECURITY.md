@@ -1,6 +1,6 @@
 # Security reporting
 
-Report vulnerabilities privately to **unejs.osmani@cit.edu.al** with a description, affected version, minimal reproduction steps, and expected impact. Do not include other people's personal data or usable credentials.
+Report vulnerabilities privately to **security@unays.net** with a description, affected version, minimal reproduction steps, and expected impact. Do not include other people's personal data or usable credentials.
 
 Do not post unpatched vulnerabilities or secrets in public issues. We will review reports and coordinate fixes. This first community release has not undergone an independent security audit.
 
